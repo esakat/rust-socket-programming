@@ -5,3 +5,6 @@ authors = ["esakat <esaka.tom@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+log = "0.4"
+env_logger = "0.6.1"
+failure = "0.1.5"
