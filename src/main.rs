@@ -4,8 +4,8 @@ extern crate log;
 
 mod tcp_client;
 mod tcp_server;
-//mod udp_client;
-//mod udp_server;
+mod udp_client;
+mod udp_server;
 
 
 fn main() {
@@ -26,6 +26,17 @@ fn main() {
             }
             "client" => {
                 tcp_client::connect(address).unwrap_or_else(|e| error!("{}", e));
+            }
+            _ => {
+                missing_role();
+            }
+        },
+        "udp" => match role {
+            "server" => {
+                udp_server::server(address).unwrap_or_else(|e| error!("{}", e));
+            }
+            "client" => {
+                udp_client::communicate(address).unwrap_or_else(|e| error!("{}", e));
             }
             _ => {
                 missing_role();
